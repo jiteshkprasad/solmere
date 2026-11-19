@@ -1,0 +1,64 @@
+{
+  "currency": { "name": "crown", "plural": "crowns", "symbol": "₡" },
+  "goods": {
+    "fish_raw":       { "label": "Fresh catch",     "unit": "crate",  "basePrice": 18,  "perishDays": 1, "producedAt": ["docks"] },
+    "fish":           { "label": "Market fish",     "unit": "kg",     "basePrice": 6,   "perishDays": 2, "from": "fish_raw" },
+    "grain":          { "label": "Grain",           "unit": "sack",   "basePrice": 14,  "perishDays": 30, "producedAt": ["lindqvist_farm", "haddad_farm"] },
+    "fruit":          { "label": "Fruit",           "unit": "basket", "basePrice": 10,  "perishDays": 4, "producedAt": ["orchard", "haddad_farm"] },
+    "bread":          { "label": "Bread",           "unit": "loaf",   "basePrice": 3,   "perishDays": 2, "from": "grain" },
+    "pastry":         { "label": "Pastry",          "unit": "piece",  "basePrice": 4,   "perishDays": 1, "from": "fruit" },
+    "beer_wholesale": { "label": "Beer (keg)",      "unit": "keg",    "basePrice": 40,  "perishDays": 20, "from": "grain" },
+    "beer":           { "label": "Beer",            "unit": "pint",   "basePrice": 4,   "perishDays": 20, "from": "beer_wholesale" },
+    "meal":           { "label": "Meal",            "unit": "plate",  "basePrice": 9,   "perishDays": 0 },
+    "coffee":         { "label": "Coffee",          "unit": "cup",    "basePrice": 3,   "perishDays": 0 },
+    "tea":            { "label": "Tea",             "unit": "cup",    "basePrice": 2,   "perishDays": 0 },
+    "snack":          { "label": "Snack",           "unit": "plate",  "basePrice": 4,   "perishDays": 0 },
+    "clothes":        { "label": "Clothes",         "unit": "item",   "basePrice": 45,  "perishDays": 0, "from": "cloth" },
+    "cloth":          { "label": "Cloth",           "unit": "bolt",   "basePrice": 25,  "perishDays": 0, "import": true },
+    "goods":          { "label": "Household goods", "unit": "item",   "basePrice": 12,  "perishDays": 0, "from": "goods_wholesale" },
+    "goods_wholesale":{ "label": "Wholesale goods", "unit": "case",   "basePrice": 80,  "perishDays": 0, "import": true },
+    "timber":         { "label": "Timber",          "unit": "load",   "basePrice": 60,  "perishDays": 0, "import": true },
+    "parts":          { "label": "Spare parts",     "unit": "box",    "basePrice": 50,  "perishDays": 0, "import": true },
+    "furniture":      { "label": "Furniture",       "unit": "piece",  "basePrice": 120, "perishDays": 0, "from": "timber" },
+    "repair":         { "label": "Repair job",      "unit": "job",    "basePrice": 35,  "perishDays": 0 },
+    "haircut":        { "label": "Haircut",         "unit": "cut",    "basePrice": 8,   "perishDays": 0 },
+    "lodging":        { "label": "Night at the inn","unit": "night",  "basePrice": 20,  "perishDays": 0 },
+    "treatment":      { "label": "Clinic visit",    "unit": "visit",  "basePrice": 15,  "perishDays": 0 },
+    "loan":           { "label": "Loan",            "unit": "crowns", "basePrice": 0,   "perishDays": 0 },
+    "rent":           { "label": "Weekly rent",     "unit": "week",   "basePrice": 60,  "perishDays": 0 }
+  },
+  "needs": {
+    "food":    { "decayPerHour": 4,  "satisfiedBy": ["meal", "bread", "snack", "fish", "fruit"], "critical": 20 },
+    "rest":    { "decayPerHour": 3,  "satisfiedBy": ["sleep"], "critical": 15 },
+    "social":  { "decayPerHour": 2,  "satisfiedBy": ["conversation"], "critical": 15 },
+    "leisure": { "decayPerHour": 1.5,"satisfiedBy": ["beer", "coffee", "tea", "park", "beach", "music"], "critical": 10 },
+    "purpose": { "decayPerHour": 1,  "satisfiedBy": ["work", "worship", "creating"], "critical": 10 }
+  },
+  "wages": {
+    "note": "Crowns per sim-day, paid at end of shift from employer account. Public jobs paid from treasury.",
+    "public":  { "mayor": 90, "town_clerk": 55, "constable": 60, "harbourmaster": 65, "teacher": 55, "doctor": 110, "nurse": 55, "postman": 45, "night_watchman": 40, "temple_keeper": 30 },
+    "private": { "assistant_baker": 40, "store_clerk": 38, "barista": 36, "farmhand": 35, "fisher_apprentice": 30, "carpenter_apprentice": 32, "market_porter": 34 },
+    "ownerDraw": "Owners draw from business profit; no fixed wage."
+  },
+  "startingWallets": {
+    "note": "Deliberately unequal. Gini at start ≈ 0.45.",
+    "wealthy": 2500, "comfortable": 900, "getting_by": 350, "tight": 120, "broke": 25
+  },
+  "startingBusinessAccounts": {
+    "bank": 40000, "fish_market": 3200, "general_store": 4100, "bakery": 900, "cafe": 1800, "tavern": 2600, "brewery": 1500, "barber": 700, "tailor": 600, "carpentry": 1900, "garage": 1400, "inn": 2200, "chai_stall": 180, "realty": 6500, "lindqvist_farm": 2400, "haddad_farm": 1100, "orchard": 800
+  },
+  "treasury": { "start": 12000, "taxRate": 0.08, "publicPayrollPerDay": 615, "festivalBudgetDefault": 1500 },
+  "bank": { "loanRateWeekly": 0.02, "maxLoanMultipleOfWallet": 5, "defaultAfterMissedPayments": 3 },
+  "rent": { "weekly": { "room": 45, "flat": 70, "house": 110 }, "evictAfterMissed": 3 },
+  "outsideMarket": {
+    "note": "Off-screen stabiliser so the economy cannot collapse during tuning. Buys surplus and sells imports at basePrice within these bounds. Tighten toward 1.0 as the sim stabilises.",
+    "buyFloorMultiplier": 0.6,
+    "sellCeilingMultiplier": 1.8,
+    "dailyImportCap": 25,
+    "dailyExportCap": 25
+  },
+  "metrics": {
+    "cpiBasket": { "bread": 2, "fish": 1, "meal": 1, "beer": 1, "coffee": 1, "rent": 0.14, "goods": 0.3 },
+    "publish": ["gdp_daily", "cpi", "unemployment", "treasury", "gini", "business_pnl", "price_history", "loans_outstanding", "missed_rent", "missed_wages"]
+  }
+}

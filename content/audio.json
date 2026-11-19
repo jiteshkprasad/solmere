@@ -1,0 +1,1000 @@
+{
+ "version": 1,
+ "notes": "One-time generated audio for Solmere. `music` beds are picked by the camera's zone + time of day + active world event and crossfaded slowly. `ambience` loops are spatial: placed at locations or spread over a district zone, gated by time-of-day windows and world events, low-passed with distance. `murmur` clips are short indistinct voices used for the conversation 'bumble' layer. Pipeline: `pnpm gen:audio` calls ElevenLabs and caches raw renders in .audio-cache/raw/ (never re-spent), then `pnpm master:audio` uses ffmpeg to pick a dynamically stable interior window of each music render, crossfade the loop seam, loudness-normalise to the per-group targets in `mastering`, downmix/encode, and write apps/web/public/audio/<id>.mp3 + manifest.json + master-report.json. Times are sim hours [start, end) and may wrap past midnight.",
+ "music": [
+  {
+   "id": "m_town_day",
+   "zones": [
+    "main_street",
+    "square",
+    "lane_north",
+    "lane_south"
+   ],
+   "hours": [
+    7,
+    18
+   ],
+   "gain": 0.55,
+   "prompt": "Warm, unhurried small-town daytime bed. 84 bpm, D major, gentle 4/4. Nylon-string acoustic guitar playing a soft fingerpicked I-vi-IV-V figure, a clarinet holding long quiet notes underneath, occasional single glockenspiel notes, muted upright bass on the root, and the faintest brushed snare pulse. Friendly and sunny but very low-key. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_town_morning",
+   "zones": [
+    "main_street",
+    "square",
+    "lane_north",
+    "lane_south"
+   ],
+   "hours": [
+    5,
+    7
+   ],
+   "gain": 0.5,
+   "prompt": "Soft hopeful dawn bed for a seaside town waking up. 68 bpm, G major, 4/4. Solo steel-string acoustic guitar fingerpicking a slow two-chord figure, a music box adding a single note every other bar, one sustained flute tone far back, no bass, no percussion. Fresh, quiet, half-lit. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_town_evening",
+   "zones": [
+    "main_street",
+    "square",
+    "lane_north",
+    "lane_south"
+   ],
+   "hours": [
+    18,
+    23
+   ],
+   "gain": 0.5,
+   "prompt": "Mellow golden-hour bed for a small port town. 72 bpm, G major with a touch of E minor, 4/4. Nylon guitar chords, a muted trumpet playing sustained long tones very quietly, warm Rhodes electric piano pads, soft upright bass, brushed drums kept to a whisper. Nostalgic, slightly jazzy, but plain and repetitive. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_night",
+   "zones": [
+    "*"
+   ],
+   "hours": [
+    23,
+    5
+   ],
+   "gain": 0.4,
+   "prompt": "Very calm night bed for a sleeping coastal town. 56 bpm, A minor, 4/4 with almost no pulse. Music box playing a slow four-note figure, felt piano single notes, a warm low pad underneath, one distant sustained string note. No percussion, no bass line. Peaceful, slightly mysterious, almost still. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_harbour_day",
+   "zones": [
+    "harbour",
+    "shore"
+   ],
+   "hours": [
+    5,
+    19
+   ],
+   "gain": 0.5,
+   "prompt": "Breezy seaside folk bed for a working fishing harbour. 92 bpm, D mixolydian, lilting 6/8. Fiddle playing a short repeating two-bar phrase with no ornament flourishes, accordion holding quiet chords, acoustic guitar strumming lightly, a tin whistle adding one long note occasionally, soft shaker. Salty, warm, easy-going. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_harbour_night",
+   "zones": [
+    "harbour",
+    "shore"
+   ],
+   "hours": [
+    19,
+    5
+   ],
+   "gain": 0.4,
+   "prompt": "Slow dreamy harbour-at-night bed. 58 bpm, A minor, 4/4, almost no pulse. Concertina holding long chords, sparse acoustic guitar harmonics, bowed double bass on a low sustained root, a soft fog-like pad. Lonely but warm, like a lighthouse beam crossing dark water. No percussion. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_farms",
+   "zones": [
+    "hill_farms"
+   ],
+   "hours": [
+    5,
+    20
+   ],
+   "gain": 0.5,
+   "prompt": "Pastoral bed for hill farms and an orchard. 80 bpm, G major, 4/4. Acoustic guitar fingerpicking a steady two-chord figure, mandolin playing quiet repeated eighth notes, a wooden flute on long tones, soft low strings as a pad, no drums. Open, breezy, rolling fields, completely relaxed. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_workshop",
+   "zones": [
+    "workshop_row"
+   ],
+   "hours": [
+    7,
+    18
+   ],
+   "gain": 0.45,
+   "prompt": "Gently industrious bed for a row of small workshops. 96 bpm, A minor, 4/4. Marimba playing a soft repeating ostinato, muted wood-block ticking quietly like a clock, upright bass walking slowly, a clarinet holding long notes. Busy-feeling but quiet and even; the pulse never speeds up or gets louder. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_tavern",
+   "zones": [
+    "tavern"
+   ],
+   "hours": [
+    17,
+    2
+   ],
+   "gain": 0.5,
+   "point": true,
+   "prompt": "Folk session heard from the corner of a harbour tavern. 104 bpm, D major, steady 6/8 jig feel. Fiddle playing one short repeating jig phrase, button accordion comping, acoustic guitar chords, a bodhran keeping a soft even pulse. Played quietly and casually, like musicians in the back of a warm wooden room, recorded from across the room. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 40
+  },
+  {
+   "id": "m_chapel",
+   "zones": [
+    "temple"
+   ],
+   "hours": [
+    6,
+    21
+   ],
+   "gain": 0.4,
+   "point": true,
+   "prompt": "Quiet reverent bed for a small stone chapel. 50 bpm, C major, no strict metre. Soft pipe organ holding long sustained chords, a single solo cello line moving very slowly, a faint wordless choral pad with no consonants and no words. Serene, spacious, still; the same slow chord cycle repeats throughout. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 40
+  },
+  {
+   "id": "m_cafe",
+   "zones": [
+    "cafe"
+   ],
+   "hours": [
+    7,
+    21
+   ],
+   "gain": 0.4,
+   "point": true,
+   "prompt": "Cosy cafe bossa nova coming out of an old radio. 84 bpm, F major, bossa pattern. Nylon guitar playing the same two-bar bossa comp, soft brushed drums, muted upright piano playing sparse chords, warm double bass. Slightly lo-fi and band-limited as if through a small speaker, intimate and low. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 40
+  },
+  {
+   "id": "m_festival",
+   "zones": [
+    "square",
+    "main_street",
+    "shore"
+   ],
+   "hours": [
+    10,
+    24
+   ],
+   "gain": 0.6,
+   "event": "festival",
+   "prompt": "Cheerful town festival band bed. 112 bpm, G major, 2/4 march-dance feel. Small brass band with tuba on a steady two-beat bass, one trumpet and one clarinet trading a short repeating tune, fiddle doubling it, tambourine and a soft bass drum keeping an even pulse. Festive and warm but even in level; bunting and bonfires, not a parade finale. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  },
+  {
+   "id": "m_storm",
+   "zones": [
+    "*"
+   ],
+   "hours": [
+    0,
+    24
+   ],
+   "gain": 0.45,
+   "event": "storm",
+   "prompt": "Dark ambient storm bed for a coastal town. D minor, no tempo and no pulse whatsoever. One low bowed cello drone, a double bass pedal note and a dark synth pad, all three held at one unchanging volume for the entire take, like a single sustained chord that never moves. No piano, no struck or plucked notes, no percussion, no swell, no crescendo, no tremolo, no rising texture, no event of any kind. Every second sounds the same as every other second. Ominous but still and beautiful. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 40
+  },
+  {
+   "id": "m_election",
+   "zones": [
+    "square",
+    "town_hall"
+   ],
+   "hours": [
+    8,
+    22
+   ],
+   "gain": 0.5,
+   "event": "election_day",
+   "prompt": "Small-town civic march bed, proud and a little tongue-in-cheek. 100 bpm, C major, 4/4. Snare drum playing a quiet even march pattern with no fills, tuba and trombone on a simple two-beat bass, one clarinet and one trumpet on a short repeating figure, no cymbals. Sounds like a village band rehearsing the same eight bars. Arrangement stays exactly the same from the first second to the last: no intro, no outro, no build, no drop, no fill, no crash cymbal, no riser, no final chord, no fade in and no fade out. One short chord progression looped for the whole take with only tiny variation; no section change, no key change, no solo. Sparse: at most three or four instruments sounding at any moment, lots of space, steady dynamics throughout. Dry close-miked recording with gentle tape warmth, small natural room, no sweeping reverb, no sidechain pumping. This is a background bed for a game that loops forever, so it must never draw attention to itself. Instrumental, no vocals, no vocal samples.",
+   "rawMs": 90000,
+   "loopSeconds": 48
+  }
+ ],
+ "ambience": [
+  {
+   "id": "a_sea_waves",
+   "duration": 28,
+   "gain": 0.7,
+   "place": {
+    "kind": "line",
+    "district": "shore",
+    "points": [
+     [
+      10,
+      300
+     ],
+     [
+      60,
+      300
+     ],
+     [
+      100,
+      295
+     ],
+     [
+      0,
+      260
+     ],
+     [
+      0,
+      200
+     ]
+    ],
+    "radius": 120
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "Calm sea washing onto a sand and shingle beach, recorded ten metres up the beach. Waves breaking every six seconds, soft foam hiss between them, water dragging back over shingle, a faint low sea rumble far out. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_sea_breeze",
+   "duration": 28,
+   "gain": 0.4,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "harbour",
+     "shore"
+    ],
+    "radius": 160
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "Light steady sea breeze over a small harbour, recorded on the quay. Wide soft wind with no howling gusts, rope creaking on a wooden bollard close by, a halyard tapping a mast twenty metres away, water slapping stone below. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_gulls",
+   "duration": 26,
+   "gain": 0.45,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "docks",
+     "fish_market",
+     "beach",
+     "lighthouse"
+    ],
+    "radius": 90
+   },
+   "hours": [
+    5,
+    20
+   ],
+   "prompt": "Herring gulls over a fishing harbour in open air. Two gulls calling close by, three or four more answering further off, occasional wing flaps, a very faint low sea underneath. Calls spread evenly, never all at once. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_harbour_work",
+   "duration": 26,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "docks",
+     "fish_market"
+    ],
+    "radius": 60
+   },
+   "hours": [
+    5,
+    15
+   ],
+   "prompt": "A working fishing pier ten metres away. Wooden hulls knocking against fenders, mooring ropes creaking, a plastic crate set down on planks, water lapping pilings, a small diesel engine idling thirty metres off. Unhurried, even activity. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_lighthouse_wind",
+   "duration": 26,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "lighthouse"
+    ],
+    "radius": 70
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "Wind around a lighthouse on a rocky headland. Steady high wind hollow-whistling past stone and railings, waves breaking on rocks fifteen metres below, spray hiss. Exposed and wide. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_songbirds",
+   "duration": 28,
+   "gain": 0.45,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "lane_north",
+     "lane_south",
+     "square",
+     "hill_farms"
+    ],
+    "radius": 140
+   },
+   "hours": [
+    5,
+    10
+   ],
+   "prompt": "Dawn chorus in a small walled town garden. A blackbird singing eight metres away, a robin further back, sparrows chattering in a hedge nearby, one wood pigeon far off, very light air. Birds overlap evenly the whole time. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_birds_day",
+   "duration": 28,
+   "gain": 0.3,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "lane_north",
+     "lane_south",
+     "hill_farms",
+     "workshop_row"
+    ],
+    "radius": 140
+   },
+   "hours": [
+    10,
+    19
+   ],
+   "prompt": "Sparse afternoon countryside. Light breeze moving leaves in nearby trees, a chaffinch and a blue tit calling now and then at twenty metres, a wood pigeon cooing far away, very faint insects. Long calm stretches. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_crickets",
+   "duration": 28,
+   "gain": 0.45,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "hill_farms",
+     "lane_north",
+     "lane_south",
+     "workshop_row"
+    ],
+    "radius": 160
+   },
+   "hours": [
+    20,
+    5
+   ],
+   "prompt": "Warm summer night in open fields. A dense even bed of crickets and field grasshoppers, two close and the rest spread wide and distant, light breeze in dry grass, a tawny owl calling twice far off. Steady and hypnotic. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_wind_grass",
+   "duration": 28,
+   "gain": 0.35,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "hill_farms"
+    ],
+    "radius": 130
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "Wind through tall grass and standing crops on an open hill. Broad soft rustling rising and falling gently, dry stalks ticking together close by, a leafy hedgerow further away. No gust loud enough to stand out. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_sheep",
+   "duration": 24,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "lindqvist_farm",
+     "haddad_farm"
+    ],
+    "radius": 70
+   },
+   "hours": [
+    6,
+    20
+   ],
+   "prompt": "A small flock of sheep on a hillside field. One ewe bleating fifteen metres away, two answering from sixty metres, small neck bells clinking as they move, light wind in grass underneath. Calls evenly spaced, never a chorus. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_cows",
+   "duration": 24,
+   "gain": 0.35,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "lindqvist_farm"
+    ],
+    "radius": 70
+   },
+   "hours": [
+    6,
+    20
+   ],
+   "prompt": "A few dairy cows in a farm field. One cow lowing twenty metres away every ten seconds or so, another much further off, a cow bell clinking, hooves shifting in grass, light air. Calm and slow. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_chickens",
+   "duration": 24,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "haddad_farm",
+     "farmhouse_lindqvist"
+    ],
+    "radius": 45
+   },
+   "hours": [
+    6,
+    19
+   ],
+   "prompt": "A farmyard flock of hens five metres away. Constant low clucking and burbling, claws scratching dry dirt and straw, one hen fussing briefly now and then, a cockerel crowing once far away. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_orchard",
+   "duration": 26,
+   "gain": 0.35,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "orchard"
+    ],
+    "radius": 60
+   },
+   "hours": [
+    6,
+    20
+   ],
+   "prompt": "An apple orchard on a breezy day. Leaves rustling overhead close by, bees and hoverflies humming within a metre or two, a wooden ladder creaking against a branch occasionally, small birds twenty metres off. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_market",
+   "duration": 28,
+   "gain": 0.45,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "town_square",
+     "chai_stall",
+     "general_store"
+    ],
+    "radius": 55
+   },
+   "hours": [
+    8,
+    19
+   ],
+   "prompt": "A small-town square from the middle of it. Indistinct walla of six or eight people scattered at ten to thirty metres, footsteps on cobbles, a bicycle bell, a wooden handcart rolling, coins on a tray, an awning flapping. No voice in front. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_fountain",
+   "duration": 24,
+   "gain": 0.5,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "town_square"
+    ],
+    "radius": 35
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "A stone fountain in a town square from two metres away. Steady water falling from three spouts into a basin, constant splash and trickle, faint stone reflections, very light breeze. Unchanging. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_cafe",
+   "duration": 26,
+   "gain": 0.45,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "cafe"
+    ],
+    "radius": 35
+   },
+   "hours": [
+    7,
+    21
+   ],
+   "prompt": "Inside a small cosy cafe. Cups and saucers on a counter, a teaspoon stirring, an espresso machine hissing and steaming now and then, a fridge hum, murmured conversation of three or four people at the far end, one chair scrape. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_tavern",
+   "duration": 28,
+   "gain": 0.5,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "tavern"
+    ],
+    "radius": 40
+   },
+   "hours": [
+    17,
+    2
+   ],
+   "prompt": "A busy old harbour tavern at night, from a corner table. Warm dense murmur of twenty people, scattered laughter, tankards clunking on wood, a stool scraping flagstones, a heavy door thumping, floorboards creaking. Nobody in the foreground. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_bakery",
+   "duration": 24,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "bakery"
+    ],
+    "radius": 30
+   },
+   "hours": [
+    4,
+    18
+   ],
+   "prompt": "Inside a small bakery working before dawn. A heavy oven door clanking open and shut, metal trays sliding on racks, dough kneaded and slapped on a wooden bench, a brass shop bell ringing once far off, a low extractor fan hum. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_carpentry",
+   "duration": 26,
+   "gain": 0.45,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "carpentry"
+    ],
+    "radius": 45
+   },
+   "hours": [
+    7,
+    17
+   ],
+   "prompt": "A carpenter's workshop three metres away. A hand saw cutting pine in even strokes, a hammer tapping nails, a plane taking long shavings off a board, shavings dropping to the floor, a chisel set down on a bench. Same steady pace throughout. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_garage",
+   "duration": 26,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "garage"
+    ],
+    "radius": 45
+   },
+   "hours": [
+    8,
+    18
+   ],
+   "prompt": "A small mechanic's garage with a car engine already running at a steady rough idle the whole time. Over that idle: a ratchet clicking, a spanner set down on concrete, an air compressor hissing, a trolley jack rolling. No engine starting or stopping, no revving, nothing that happens only once. Even level throughout, no fade in or out, no build. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_brewery",
+   "duration": 26,
+   "gain": 0.35,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "brewery"
+    ],
+    "radius": 40
+   },
+   "hours": [
+    7,
+    17
+   ],
+   "prompt": "Inside a small brewery. Wort bubbling and fermenting in a vessel close by, a copper kettle ticking as it heats, a hose splashing into a drain, a keg rolling on a stone floor, a low pump hum. Warm, wet, continuous. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_school",
+   "duration": 26,
+   "gain": 0.3,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "school"
+    ],
+    "radius": 40
+   },
+   "hours": [
+    8,
+    15
+   ],
+   "prompt": "Inside a one-room schoolhouse during a lesson. Chalk on a blackboard, pages turning, pencils on paper, a wooden chair creaking, a pendulum clock ticking steadily, a teacher as a soft unintelligible murmur at the far end of the room. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_chapel",
+   "duration": 26,
+   "gain": 0.3,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "temple"
+    ],
+    "radius": 35
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "prompt": "Inside a small empty stone chapel. Deep still room tone with long natural stone reverb, a candle flame guttering close by, a pew creaking far off, a faint draught through the door, one distant muffled outdoor sound. Almost silent but not dead. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_clinic",
+   "duration": 24,
+   "gain": 0.25,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "clinic"
+    ],
+    "radius": 25
+   },
+   "hours": [
+    8,
+    18
+   ],
+   "prompt": "A small clinic waiting room. A wall clock ticking, paper rustling, a wooden cabinet drawer opening and closing, a kettle starting to boil in a back room, a fluorescent light hum, a chair creaking. Calm, clean, sparse. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_park_pond",
+   "duration": 26,
+   "gain": 0.4,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "park"
+    ],
+    "radius": 45
+   },
+   "hours": [
+    5,
+    21
+   ],
+   "prompt": "A small park pond in late afternoon. Mallards muttering and quacking softly ten metres away, spaced evenly right through the recording with no quiet gaps, water lapping reed beds continuously, a frog calling now and then from the far bank, leaves in a light breeze. Even level throughout, no fade in or out, no build. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2,
+   "loopSeconds": 15
+  },
+  {
+   "id": "a_night_town",
+   "duration": 28,
+   "gain": 0.3,
+   "place": {
+    "kind": "zone",
+    "districts": [
+     "main_street",
+     "square",
+     "lane_north",
+     "lane_south",
+     "workshop_row"
+    ],
+    "radius": 160
+   },
+   "hours": [
+    22,
+    5
+   ],
+   "prompt": "A small town street at two in the morning. Near silence with a faint wide room tone, very light breeze, a metal shop sign creaking on its bracket nearby, a dog barking twice a long way off, a distant church clock. Extremely quiet and empty. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_rain",
+   "duration": 28,
+   "gain": 0.6,
+   "place": {
+    "kind": "global"
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "event": "storm",
+   "prompt": "Heavy steady rain on slate roofs and cobblestones, recorded under a doorway. Constant dense rain hiss, large drops on stone close by, water running hard in a gutter and downpipe, wind pushing the rain in waves. No thunder. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_storm_wind",
+   "duration": 28,
+   "gain": 0.5,
+   "place": {
+    "kind": "global"
+   },
+   "hours": [
+    0,
+    24
+   ],
+   "event": "storm",
+   "prompt": "Strong storm wind through a coastal town. Deep howling gusts around stone corners and chimneys, shutters and a loose sign rattling nearby, a heavy sea breaking in the distance, wire and rope humming in the wind. Sustained, no single peak gust. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  },
+  {
+   "id": "a_heat_haze",
+   "duration": 28,
+   "gain": 0.3,
+   "place": {
+    "kind": "global"
+   },
+   "hours": [
+    10,
+    18
+   ],
+   "event": "heatwave",
+   "prompt": "A very hot, still summer afternoon. A dense steady wall of cicadas in trees twenty metres away, two much closer, a fly passing occasionally, an almost imperceptible warm breeze. Heavy and drowsy. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_bonfire",
+   "duration": 26,
+   "gain": 0.5,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "beach"
+    ],
+    "radius": 45
+   },
+   "hours": [
+    19,
+    3
+   ],
+   "event": "festival",
+   "prompt": "A large driftwood bonfire on a beach at night, three metres back. Constant crackling and popping, wood settling now and then, a soft roar of flame, a calm night sea breaking gently far behind it. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech."
+  },
+  {
+   "id": "a_festival_crowd",
+   "duration": 28,
+   "gain": 0.5,
+   "place": {
+    "kind": "points",
+    "locations": [
+     "town_square",
+     "beach"
+    ],
+    "radius": 60
+   },
+   "hours": [
+    10,
+    24
+   ],
+   "event": "festival",
+   "prompt": "A happy outdoor festival crowd of about forty people in a square. Cheerful blurred murmur and laughter all around, a short scatter of applause, children playing far off, bunting and canvas flapping, a whistle far away. No voice in front. Even level throughout, no fade in or out, no build, no single dramatic event. Seamless loop. No music, no words, no intelligible speech.",
+   "layers": 2
+  }
+ ],
+ "oneShots": [
+  {
+   "id": "s_bell",
+   "duration": 8,
+   "gain": 0.6,
+   "prompt": "A single bronze church bell in a small stone tower rung three slow times outdoors, about eighty metres away. Clear strike, long natural decay into open air, faint village reverb. Starts on the first strike, ends with the decay. No music, no voices."
+  },
+  {
+   "id": "s_thunder",
+   "duration": 7,
+   "gain": 0.7,
+   "prompt": "Distant rolling thunder far out over the sea. A long low rumble that swells slightly and rolls away over several seconds. No rain, no wind, no music."
+  },
+  {
+   "id": "s_thunder_close",
+   "duration": 6,
+   "gain": 0.8,
+   "prompt": "A close sharp thunderclap directly overhead, hard crack then a long deep rolling rumble decaying away. Dry, no rain underneath, no music."
+  },
+  {
+   "id": "s_foghorn",
+   "duration": 6,
+   "gain": 0.5,
+   "prompt": "A deep lighthouse foghorn, two long low blasts heard from far away across open water, with a slight natural echo returning off the coast. No music, no voices."
+  },
+  {
+   "id": "s_boat_horn",
+   "duration": 4,
+   "gain": 0.5,
+   "prompt": "A small fishing boat's horn sounding two short toots on an open harbour, close by, with a short slap-back off the harbour wall. No music, no voices."
+  },
+  {
+   "id": "s_fireworks",
+   "duration": 10,
+   "gain": 0.6,
+   "prompt": "A short volley of fireworks over water, heard from two hundred metres: three whistling rises, three bangs with crackling sparkle tails, a faint crowd reacting far behind. Outdoors at night. No music."
+  },
+  {
+   "id": "s_door_bell",
+   "duration": 2,
+   "gain": 0.3,
+   "prompt": "A small brass shop-door bell on a spring jingling once briefly as a door opens, close mic, dry indoor room. No music, no voices."
+  },
+  {
+   "id": "s_cheer",
+   "duration": 5,
+   "gain": 0.5,
+   "prompt": "A small crowd of about thirty adults cheering and applauding outdoors in a town square, rising quickly and settling. Warm and genuine, no chanting, no clear words, no music."
+  },
+  {
+   "id": "s_gasp",
+   "duration": 3,
+   "gain": 0.4,
+   "prompt": "A small crowd of adults gasping in surprise together, then falling into a low murmur. Outdoors, no clear words, no music."
+  },
+  {
+   "id": "s_coin",
+   "duration": 1.5,
+   "gain": 0.3,
+   "prompt": "Two or three small coins dropped one after another onto a hard wooden counter, close mic, dry, with a short wooden ring. No music, no voices."
+  }
+ ],
+ "murmur": [
+  {
+   "id": "v_m_low",
+   "duration": 3,
+   "prompt": "One adult man mumbling a single short indistinct sentence in a low warm voice, as if heard through a wall: the rhythm and intonation of speech but no recognisable words in any language. Close, dry, no room reverb, no music, no other voices. Speech starts immediately and stops cleanly."
+  },
+  {
+   "id": "v_m_mid",
+   "duration": 3,
+   "prompt": "One adult man muttering a short indistinct phrase at medium pitch, mildly animated, conversational rhythm with no recognisable words in any language. Close, dry, no room reverb, no music, no other voices."
+  },
+  {
+   "id": "v_f_low",
+   "duration": 3,
+   "prompt": "One adult woman speaking a short indistinct sentence in a low calm voice, muffled as if through a closed door, with speech-like rhythm but no recognisable words in any language. Close, dry, no music, no other voices."
+  },
+  {
+   "id": "v_f_mid",
+   "duration": 3,
+   "prompt": "One adult woman saying a short indistinct phrase at medium-high pitch, lively and quick, speech-like intonation with no recognisable words in any language. Close, dry, no music, no other voices."
+  },
+  {
+   "id": "v_elder",
+   "duration": 3,
+   "prompt": "One elderly person grumbling a short indistinct phrase, slow and gravelly, speech-like rhythm with no recognisable words in any language. Close, dry, no music, no other voices."
+  },
+  {
+   "id": "v_young",
+   "duration": 3,
+   "prompt": "One young adult saying a quick indistinct phrase, bright and fast, speech-like intonation with no recognisable words in any language. Close, dry, no music, no other voices."
+  }
+ ],
+ "murmurVoice": {
+  "note": "which murmur clip each NPC uses (from appearance.json gender/age); playbackRate is varied ±8% per NPC id hash",
+  "rules": [
+   {
+    "when": {
+     "age": "elder"
+    },
+    "use": "v_elder"
+   },
+   {
+    "when": {
+     "age": "young"
+    },
+    "use": "v_young"
+   },
+   {
+    "when": {
+     "gender": "M",
+     "build": [
+      "heavy",
+      "sturdy"
+     ]
+    },
+    "use": "v_m_low"
+   },
+   {
+    "when": {
+     "gender": "M"
+    },
+    "use": "v_m_mid"
+   },
+   {
+    "when": {
+     "gender": "F",
+     "age": [
+      "middle",
+      "senior"
+     ]
+    },
+    "use": "v_f_low"
+   },
+   {
+    "when": {
+     "gender": "F"
+    },
+    "use": "v_f_mid"
+   },
+   {
+    "when": {},
+    "use": "v_young"
+   }
+  ]
+ },
+ "mix": {
+  "master": 0.85,
+  "music": 0.7,
+  "ambience": 0.75,
+  "murmur": 0.7,
+  "oneShots": 0.65,
+  "crossfadeSeconds": 8,
+  "pointDuck": 0.75,
+  "distanceLowpass": {
+   "nearHz": 18000,
+   "farHz": 900,
+   "interiorHz": 5200
+  },
+  "listenerHeightCurve": "above 90 m the camera hears a wide town mix; below 30 m it hears the local zone strongly"
+ },
+ "mastering": {
+  "note": "Two-pass ffmpeg loudnorm measurement, single linear gain applied (dynamic normalisation would re-introduce wandering loudness and smear the loop seam). Music sits well under the world; ambience a little louder; one-shots punch through; murmur stays quiet. limitHeadroomDb in master-audio.ts says how much peak limiting each group tolerates when linear gain alone cannot reach the target. seamCrossfade is the overlap-add length used to make loops seamless.",
+  "targets": {
+   "music": {
+    "lufs": -23,
+    "truePeak": -1.5,
+    "lra": 5,
+    "channels": 2,
+    "bitrate": "128k",
+    "seamCrossfade": 4.0
+   },
+   "ambience": {
+    "lufs": -20,
+    "truePeak": -1.5,
+    "lra": 9,
+    "channels": 1,
+    "bitrate": "96k",
+    "seamCrossfade": 1.8
+   },
+   "oneShots": {
+    "lufs": -14,
+    "truePeak": -1.0,
+    "lra": 11,
+    "channels": 1,
+    "bitrate": "96k",
+    "seamCrossfade": 0
+   },
+   "murmur": {
+    "lufs": -24,
+    "truePeak": -1.5,
+    "lra": 11,
+    "channels": 1,
+    "bitrate": "64k",
+    "seamCrossfade": 0
+   }
+  }
+ }
+}

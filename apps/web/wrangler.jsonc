@@ -1,0 +1,25 @@
+{
+  // Solmere season replay: the static export (pnpm build:replay, REPLAY_SITE_URL=https://solmere.jitesh.app) served
+  // as Workers static assets, plus a small comments API (worker/index.ts, D1). Only /api/* runs Worker code;
+  // no engine, no AI calls per visitor.
+  "name": "solmere",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    // database_id is filled in when the database is created (wrangler d1 create solmere-comments)
+    { "binding": "DB", "database_name": "solmere-comments", "database_id": "cde58ad2-7150-4a64-83aa-d8b3625fa9a6" }
+  ],
+  // Secrets (wrangler secret put): TURNSTILE_SECRET, MOD_KEY, IP_SALT. Local dev: .dev.vars with Cloudflare's test keys.
+  "vars": { "TURNSTILE_SITE_KEY": "0x4AAAAAAF66ksy5EtDW2bhz" },
+  "routes": [{ "pattern": "solmere.jitesh.app", "custom_domain": true }],
+  "observability": { "enabled": true }
+}

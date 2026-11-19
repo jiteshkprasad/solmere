@@ -1,0 +1,1553 @@
+{
+  "version": 1,
+  "note": "Story arcs for the director (apps/engine/src/core/story.ts). Each seeded conflict moves simmer -> incident -> confront -> decision -> aftermath. Text here is pressure and stakes, never dialogue: the LLM writes what people actually say and the decider's choice is made by the brain (resolveArc).",
+  "arcs": [
+    {
+      "id": "bakery_loan",
+      "title": "The bakery loan",
+      "incident": {
+        "text": "A third loan payment on Okafor's Bakery falls due today and the till is ₡120 short.",
+        "drivers": [
+          "mira_okafor",
+          "cornelius_ashdown"
+        ]
+      },
+      "confront": {
+        "note": "Tunde has noticed Mira counting the till twice. Today he asks her straight out what is wrong with the money.",
+        "drivers": [
+          "tunde_okafor",
+          "mira_okafor"
+        ]
+      },
+      "decision": {
+        "decider": "cornelius_ashdown",
+        "question": "Does Neil call in the bakery loan, extend it once more on his own word, or quietly cover the gap himself?",
+        "options": [
+          {
+            "id": "call_in",
+            "fact": "The bank has called in the bakery loan. The Okafors must find ₡600 within the week or lose the ovens.",
+            "effects": {
+              "affinity": [
+                [
+                  "mira_okafor",
+                  "cornelius_ashdown",
+                  -30
+                ],
+                [
+                  "tunde_okafor",
+                  "cornelius_ashdown",
+                  -25
+                ]
+              ],
+              "mood": {
+                "mira_okafor": -20,
+                "tunde_okafor": -15
+              }
+            }
+          },
+          {
+            "id": "extend",
+            "fact": "Neil Ashdown extended the bakery loan by a month on his own signature, against bank policy.",
+            "effects": {
+              "affinity": [
+                [
+                  "mira_okafor",
+                  "cornelius_ashdown",
+                  20
+                ]
+              ],
+              "mood": {
+                "mira_okafor": 10,
+                "cornelius_ashdown": -5
+              }
+            }
+          },
+          {
+            "id": "cover",
+            "fact": "Someone paid the bakery's missed instalment in cash. Neil Ashdown won't say who.",
+            "effects": {
+              "money": [
+                "cornelius_ashdown",
+                "mira_okafor",
+                120
+              ],
+              "affinity": [
+                [
+                  "mira_okafor",
+                  "cornelius_ashdown",
+                  25
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The bakery loan is settled one way or another. Live with the result: the money, the pride, and who knew what."
+    },
+    {
+      "id": "rent_cap",
+      "title": "The rent cap",
+      "incident": {
+        "text": "Marcus Vale has posted new rents on Gull Lane: up ₡10 a week from next month. Four tenants are already behind.",
+        "drivers": [
+          "marcus_vale",
+          "jay_whitlock",
+          "noor_rahman"
+        ]
+      },
+      "confront": {
+        "note": "The tenants want a rent-cap petition signed by the weekend. Jay is collecting names door to door; Marcus is visiting the same doors.",
+        "drivers": [
+          "jay_whitlock",
+          "marcus_vale",
+          "dolores_quinn"
+        ]
+      },
+      "decision": {
+        "decider": "ingrid_halvorsen",
+        "question": "Does Mayor Ingrid put the rent cap to the council, bury the petition, or broker a private deal with her brother-in-law?",
+        "options": [
+          {
+            "id": "to_council",
+            "fact": "The mayor has put a rent cap to the council, against her own brother-in-law.",
+            "effects": {
+              "affinity": [
+                [
+                  "marcus_vale",
+                  "ingrid_halvorsen",
+                  -25
+                ],
+                [
+                  "jay_whitlock",
+                  "ingrid_halvorsen",
+                  15
+                ]
+              ],
+              "policy": "rent_cap"
+            }
+          },
+          {
+            "id": "bury",
+            "fact": "The rent-cap petition sits unread on the mayor's desk. The tenants know it.",
+            "effects": {
+              "affinity": [
+                [
+                  "jay_whitlock",
+                  "ingrid_halvorsen",
+                  -25
+                ],
+                [
+                  "noor_rahman",
+                  "ingrid_halvorsen",
+                  -15
+                ]
+              ],
+              "mood": {
+                "jay_whitlock": -10
+              }
+            }
+          },
+          {
+            "id": "deal",
+            "fact": "Marcus Vale has agreed to delay the Gull Lane rise until spring after a private talk with the mayor.",
+            "effects": {
+              "affinity": [
+                [
+                  "jay_whitlock",
+                  "marcus_vale",
+                  5
+                ]
+              ],
+              "mood": {
+                "noor_rahman": 5,
+                "tomas_reyes": 5
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "The rent question has an answer for now. Tenants and landlord adjust to it, and everyone remembers who stood where."
+    },
+    {
+      "id": "fish_prices",
+      "title": "Two fishers, one buyer",
+      "incident": {
+        "text": "Leo Petrov saw Devendra Rao's scale tip before a single fish touched it. He has told Chen.",
+        "drivers": [
+          "leo_petrov",
+          "chen_wei"
+        ]
+      },
+      "confront": {
+        "note": "Chen has a year of price slips. Today the fishers talk about selling together, as a cooperative, instead of one by one to Devendra.",
+        "drivers": [
+          "chen_wei",
+          "tunde_okafor",
+          "devendra_rao"
+        ]
+      },
+      "decision": {
+        "decider": "devendra_rao",
+        "question": "Does Devendra raise his prices to keep the fishers, threaten them, or let the cooperative happen and sell for them?",
+        "options": [
+          {
+            "id": "raise",
+            "fact": "Devendra Rao now pays fishers a crown more a crate. He says it was always the plan.",
+            "effects": {
+              "affinity": [
+                [
+                  "chen_wei",
+                  "devendra_rao",
+                  10
+                ],
+                [
+                  "tunde_okafor",
+                  "devendra_rao",
+                  10
+                ]
+              ]
+            }
+          },
+          {
+            "id": "threaten",
+            "fact": "Devendra Rao told the fishers that anyone who joins a cooperative will not sell a single crate at the market again.",
+            "effects": {
+              "affinity": [
+                [
+                  "chen_wei",
+                  "devendra_rao",
+                  -25
+                ],
+                [
+                  "tunde_okafor",
+                  "devendra_rao",
+                  -20
+                ],
+                [
+                  "leo_petrov",
+                  "devendra_rao",
+                  -15
+                ]
+              ]
+            }
+          },
+          {
+            "id": "partner",
+            "fact": "The fishers and Devendra Rao shook hands on a shared price board at the Fish Market.",
+            "effects": {
+              "affinity": [
+                [
+                  "chen_wei",
+                  "devendra_rao",
+                  20
+                ],
+                [
+                  "bakary_diallo",
+                  "devendra_rao",
+                  10
+                ]
+              ],
+              "mood": {
+                "chen_wei": 10
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "The fish price fight has settled. People adjust their days, their margins and their grudges to it."
+    },
+    {
+      "id": "finch_achebe",
+      "title": "Walter vs the doctor",
+      "incident": {
+        "text": "Walter Finch stood up in the Anchor last night and said out loud that Dr Achebe killed his wife.",
+        "drivers": [
+          "walter_finch",
+          "jonah_kowalski"
+        ]
+      },
+      "confront": {
+        "note": "Grace Achebe has heard what Walter said. Today she wants her husband to answer it, and Samuel wants to be left alone.",
+        "drivers": [
+          "grace_achebe",
+          "samuel_achebe"
+        ]
+      },
+      "decision": {
+        "decider": "samuel_achebe",
+        "question": "Does Dr Achebe visit Walter and admit his part, keep silent, or ask the council to stop the slander?",
+        "options": [
+          {
+            "id": "visit",
+            "fact": "Dr Achebe sat with Walter Finch for an hour. Walter has not said a word against him since.",
+            "effects": {
+              "affinity": [
+                [
+                  "walter_finch",
+                  "samuel_achebe",
+                  30
+                ],
+                [
+                  "samuel_achebe",
+                  "walter_finch",
+                  15
+                ]
+              ],
+              "mood": {
+                "samuel_achebe": 10,
+                "walter_finch": 10
+              }
+            }
+          },
+          {
+            "id": "silent",
+            "fact": "Dr Achebe will not discuss Walter Finch. The tavern talk goes on.",
+            "effects": {
+              "affinity": [
+                [
+                  "grace_achebe",
+                  "samuel_achebe",
+                  -10
+                ]
+              ],
+              "mood": {
+                "samuel_achebe": -10
+              }
+            }
+          },
+          {
+            "id": "complain",
+            "fact": "Dr Achebe has asked the council to warn Walter Finch about slander.",
+            "effects": {
+              "affinity": [
+                [
+                  "walter_finch",
+                  "samuel_achebe",
+                  -30
+                ],
+                [
+                  "jonah_kowalski",
+                  "samuel_achebe",
+                  -10
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "Something has shifted between the doctor and the widower. The town notices who sits where."
+    },
+    {
+      "id": "kowalski_brothers",
+      "title": "The brothers and the licence",
+      "incident": {
+        "text": "A crate of Kowalski beer was delivered to the back door of Café Moreno, labelled for the café.",
+        "drivers": [
+          "jonah_kowalski",
+          "rosa_moreno"
+        ]
+      },
+      "confront": {
+        "note": "Jonah now knows his brother is supplying the café that wants to compete with his tavern. Today he goes to the brewery.",
+        "drivers": [
+          "jonah_kowalski",
+          "wojciech_kowalski"
+        ]
+      },
+      "decision": {
+        "decider": "wojciech_kowalski",
+        "question": "Does Wojtek keep supplying the café, back out for his brother, or offer Jonah a better price too?",
+        "options": [
+          {
+            "id": "keep",
+            "fact": "Wojtek Kowalski will keep supplying Café Moreno. The brothers are not speaking.",
+            "effects": {
+              "affinity": [
+                [
+                  "jonah_kowalski",
+                  "wojciech_kowalski",
+                  -30
+                ],
+                [
+                  "wojciech_kowalski",
+                  "jonah_kowalski",
+                  -15
+                ]
+              ]
+            }
+          },
+          {
+            "id": "back_out",
+            "fact": "Wojtek Kowalski has stopped supplying Café Moreno. Rosa is furious.",
+            "effects": {
+              "affinity": [
+                [
+                  "rosa_moreno",
+                  "wojciech_kowalski",
+                  -25
+                ],
+                [
+                  "jonah_kowalski",
+                  "wojciech_kowalski",
+                  20
+                ]
+              ]
+            }
+          },
+          {
+            "id": "both",
+            "fact": "Wojtek Kowalski now sells to both the Anchor and the café, and gave his brother the lower price.",
+            "effects": {
+              "affinity": [
+                [
+                  "jonah_kowalski",
+                  "wojciech_kowalski",
+                  10
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The brewery has picked its side, or refused to. The brothers live with it."
+    },
+    {
+      "id": "jay_for_mayor",
+      "title": "Jay for mayor",
+      "incident": {
+        "text": "Jay Whitlock pinned a hand-written notice to the town hall door: he is standing for mayor.",
+        "drivers": [
+          "jay_whitlock",
+          "dolores_quinn"
+        ]
+      },
+      "confront": {
+        "note": "Someone has noticed that Jay has money though he has no job. Yusuf is asked about it at the garage.",
+        "drivers": [
+          "yusuf_demir",
+          "osman_kaya",
+          "jay_whitlock"
+        ]
+      },
+      "decision": {
+        "decider": "osman_kaya",
+        "question": "Does Osman admit he has been paying Jay secretly, stop paying him, or keep quiet and keep paying?",
+        "options": [
+          {
+            "id": "admit",
+            "fact": "Osman Kaya admitted at the garage that he has been paying Jay Whitlock since the firing, out of guilt.",
+            "effects": {
+              "affinity": [
+                [
+                  "yusuf_demir",
+                  "osman_kaya",
+                  15
+                ],
+                [
+                  "jay_whitlock",
+                  "osman_kaya",
+                  15
+                ]
+              ],
+              "mood": {
+                "osman_kaya": 10
+              }
+            }
+          },
+          {
+            "id": "stop",
+            "fact": "Jay Whitlock's mystery money has stopped. He is counting coins again.",
+            "effects": {
+              "mood": {
+                "jay_whitlock": -15
+              },
+              "affinity": [
+                [
+                  "jay_whitlock",
+                  "osman_kaya",
+                  -10
+                ]
+              ]
+            }
+          },
+          {
+            "id": "quiet",
+            "fact": "Nobody can say where Jay Whitlock's money comes from, and the rumour has reached the Herald.",
+            "effects": {
+              "gossip": "Jay Whitlock has money from somewhere and won't say where"
+            }
+          }
+        ]
+      },
+      "aftermath": "Jay's campaign has a new shape. People who were neutral now have an opinion."
+    },
+    {
+      "id": "boundary",
+      "title": "The boundary stone",
+      "incident": {
+        "text": "The boundary stone between the Lindqvist and Haddad fields has moved again, and Fatima's channel is dry.",
+        "drivers": [
+          "fatima_haddad",
+          "anna_lindqvist"
+        ]
+      },
+      "confront": {
+        "note": "Gus Ferreira has seen Per and Fatima at the fence at dusk. He mentions it to Anna, casually.",
+        "drivers": [
+          "gus_ferreira",
+          "anna_lindqvist",
+          "per_lindqvist"
+        ]
+      },
+      "decision": {
+        "decider": "per_lindqvist",
+        "question": "Does Per tell his mother about Fatima and the stone, keep hiding it, or quietly open the water to Fatima's field?",
+        "options": [
+          {
+            "id": "tell",
+            "fact": "Per Lindqvist told his mother he is with Fatima Haddad, and that his late father moved the boundary stone.",
+            "effects": {
+              "affinity": [
+                [
+                  "anna_lindqvist",
+                  "per_lindqvist",
+                  -20
+                ],
+                [
+                  "fatima_haddad",
+                  "per_lindqvist",
+                  20
+                ]
+              ],
+              "mood": {
+                "anna_lindqvist": -15
+              }
+            }
+          },
+          {
+            "id": "hide",
+            "fact": "Per Lindqvist denies there is anything between him and Fatima Haddad. Nobody quite believes him.",
+            "effects": {
+              "affinity": [
+                [
+                  "fatima_haddad",
+                  "per_lindqvist",
+                  -20
+                ]
+              ],
+              "mood": {
+                "fatima_haddad": -10
+              }
+            }
+          },
+          {
+            "id": "water",
+            "fact": "Water is running in the Haddad channel again. The Lindqvist sluice was opened in the night.",
+            "effects": {
+              "affinity": [
+                [
+                  "anna_lindqvist",
+                  "fatima_haddad",
+                  -10
+                ],
+                [
+                  "fatima_haddad",
+                  "per_lindqvist",
+                  15
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The field line, the water and the secret have moved. Both farms live with the new fact."
+    },
+    {
+      "id": "zara_triangle",
+      "title": "Zara's way out",
+      "incident": {
+        "text": "Teodor Ilić's city job letter fell out of his coat at the bakery. Zara read it before he could pick it up.",
+        "drivers": [
+          "zara_okafor",
+          "teodor_ilic"
+        ]
+      },
+      "confront": {
+        "note": "Zara is weighing leaving with Teodor. Rafa and Felix both want to tell her how they feel before it's too late.",
+        "drivers": [
+          "rafael_costa",
+          "felix_ashdown",
+          "zara_okafor"
+        ]
+      },
+      "decision": {
+        "decider": "zara_okafor",
+        "question": "Does Zara go to the city with Teodor, stay for her mother's bakery, or tell everyone she is leaving on her own?",
+        "options": [
+          {
+            "id": "with_teodor",
+            "fact": "Zara Okafor will go to the city with Teodor Ilić next month.",
+            "effects": {
+              "affinity": [
+                [
+                  "mira_okafor",
+                  "zara_okafor",
+                  -10
+                ],
+                [
+                  "rafael_costa",
+                  "teodor_ilic",
+                  -20
+                ]
+              ],
+              "mood": {
+                "zara_okafor": 15,
+                "mira_okafor": -15
+              }
+            }
+          },
+          {
+            "id": "stay",
+            "fact": "Zara Okafor has turned down the city. She says the bakery needs her.",
+            "effects": {
+              "mood": {
+                "zara_okafor": -10,
+                "mira_okafor": 10
+              }
+            }
+          },
+          {
+            "id": "alone",
+            "fact": "Zara Okafor is leaving Solmere in the spring, alone, and will not say for where.",
+            "effects": {
+              "mood": {
+                "teodor_ilic": -10,
+                "felix_ashdown": -10
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "Zara's choice is made. The young people of Solmere rearrange themselves around it."
+    },
+    {
+      "id": "treasury_hole",
+      "title": "The festival money",
+      "incident": {
+        "text": "The town accounts are due for posting. Aylin Demir finds the festival overspend of ₡2,100 still hidden in the harbour line.",
+        "drivers": [
+          "aylin_demir",
+          "ingrid_halvorsen"
+        ]
+      },
+      "confront": {
+        "note": "Priya Nair has the figures from a source. She asks the mayor and the clerk for a comment before she prints.",
+        "drivers": [
+          "priya_nair",
+          "aylin_demir",
+          "ingrid_halvorsen"
+        ]
+      },
+      "decision": {
+        "decider": "ingrid_halvorsen",
+        "question": "Does Mayor Ingrid publish the true accounts herself, blame the clerk, or ask Priya to hold the story until after the election?",
+        "options": [
+          {
+            "id": "publish",
+            "fact": "Mayor Ingrid Halvorsen published the true accounts: ₡2,100 of harbour money paid for the festival.",
+            "effects": {
+              "affinity": [
+                [
+                  "aylin_demir",
+                  "ingrid_halvorsen",
+                  15
+                ]
+              ],
+              "mood": {
+                "ingrid_halvorsen": -10
+              },
+              "approval": -5
+            }
+          },
+          {
+            "id": "blame",
+            "fact": "The mayor says the festival overspend was a clerk's error. Aylin Demir says otherwise.",
+            "effects": {
+              "affinity": [
+                [
+                  "aylin_demir",
+                  "ingrid_halvorsen",
+                  -35
+                ],
+                [
+                  "yusuf_demir",
+                  "ingrid_halvorsen",
+                  -20
+                ]
+              ]
+            }
+          },
+          {
+            "id": "hold",
+            "fact": "Priya Nair was asked to hold the festival money story until after the election.",
+            "effects": {
+              "affinity": [
+                [
+                  "priya_nair",
+                  "ingrid_halvorsen",
+                  -15
+                ]
+              ],
+              "gossip": "the mayor tried to stop the Herald printing something about the festival money"
+            }
+          }
+        ]
+      },
+      "aftermath": "The festival money is out in the open, or nearly. Trust in the town hall has moved."
+    },
+    {
+      "id": "school_war",
+      "title": "Two teachers",
+      "incident": {
+        "text": "Sigrid Vale kept Arjun Rao in after school for a whole afternoon. Noor Rahman let him out.",
+        "drivers": [
+          "sigrid_vale",
+          "noor_rahman"
+        ]
+      },
+      "confront": {
+        "note": "Parents are taking sides at the school gate. Felix's grandfather and Arjun's father both want a word with the teachers.",
+        "drivers": [
+          "arjun_rao",
+          "felix_ashdown",
+          "noor_rahman"
+        ]
+      },
+      "decision": {
+        "decider": "noor_rahman",
+        "question": "Does Noor accept the job elsewhere, stay and fight for her way of teaching, or offer Sigrid a truce?",
+        "options": [
+          {
+            "id": "leave",
+            "fact": "Noor Rahman has accepted a teaching post in another town. She leaves at the end of term.",
+            "effects": {
+              "mood": {
+                "zara_okafor": -10,
+                "arjun_rao": -10
+              },
+              "affinity": [
+                [
+                  "sigrid_vale",
+                  "noor_rahman",
+                  5
+                ]
+              ]
+            }
+          },
+          {
+            "id": "fight",
+            "fact": "Noor Rahman has asked the council to split the school's classes between the two teachers.",
+            "effects": {
+              "affinity": [
+                [
+                  "sigrid_vale",
+                  "noor_rahman",
+                  -25
+                ]
+              ]
+            }
+          },
+          {
+            "id": "truce",
+            "fact": "The two teachers agreed: mornings Sigrid's way, afternoons Noor's.",
+            "effects": {
+              "affinity": [
+                [
+                  "sigrid_vale",
+                  "noor_rahman",
+                  20
+                ],
+                [
+                  "noor_rahman",
+                  "sigrid_vale",
+                  20
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The school has a new rule or a teacher fewer. The children notice first."
+    },
+    {
+      "id": "hana_leaving",
+      "title": "Hana's offer",
+      "incident": {
+        "text": "Dmitri the postman delivered a second envelope from the city hospital to Hana Kimura. He read the return address, as he does.",
+        "drivers": [
+          "dmitri_volkov",
+          "hana_kimura"
+        ]
+      },
+      "confront": {
+        "note": "Dr Achebe has heard Hana might leave. Today he asks her, and she has to decide what to say.",
+        "drivers": [
+          "samuel_achebe",
+          "hana_kimura"
+        ]
+      },
+      "decision": {
+        "decider": "hana_kimura",
+        "question": "Does Hana take the city job, stay if the clinic can pay more, or stay and say nothing?",
+        "options": [
+          {
+            "id": "go",
+            "fact": "Hana Kimura is leaving the clinic for the city hospital in five weeks.",
+            "effects": {
+              "mood": {
+                "samuel_achebe": -15
+              },
+              "affinity": [
+                [
+                  "samuel_achebe",
+                  "hana_kimura",
+                  -5
+                ]
+              ]
+            }
+          },
+          {
+            "id": "stay_paid",
+            "fact": "Hana Kimura will stay at the clinic if the council funds a second nurse's wage.",
+            "effects": {
+              "policy": "clinic_match"
+            }
+          },
+          {
+            "id": "stay",
+            "fact": "Hana Kimura has written to turn the city hospital down.",
+            "effects": {
+              "affinity": [
+                [
+                  "samuel_achebe",
+                  "hana_kimura",
+                  20
+                ]
+              ],
+              "mood": {
+                "hana_kimura": -5
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "The clinic knows whether it keeps its nurse. Patients and colleagues adjust."
+    },
+    {
+      "id": "net_loft",
+      "title": "The Net Loft",
+      "incident": {
+        "text": "Marcus Vale has made an offer for the Old Net Loft. A boat half-built inside it was seen through the window.",
+        "drivers": [
+          "marcus_vale",
+          "kofi_mensah"
+        ]
+      },
+      "confront": {
+        "note": "Kofi asks Ines Larsson for help to keep the loft; Ines has the money to buy it and has never told anyone.",
+        "drivers": [
+          "kofi_mensah",
+          "ines_larsson"
+        ]
+      },
+      "decision": {
+        "decider": "ines_larsson",
+        "question": "Does Ines buy the Net Loft herself, stay out of it, or lend Kofi the money?",
+        "options": [
+          {
+            "id": "buy",
+            "fact": "Ines Larsson bought the Old Net Loft outright, to everyone's surprise. The boat stays.",
+            "effects": {
+              "affinity": [
+                [
+                  "marcus_vale",
+                  "ines_larsson",
+                  -20
+                ],
+                [
+                  "kofi_mensah",
+                  "ines_larsson",
+                  25
+                ]
+              ]
+            }
+          },
+          {
+            "id": "out",
+            "fact": "The Old Net Loft goes to Marcus Vale for holiday flats. Kofi has a week to move the boat.",
+            "effects": {
+              "mood": {
+                "kofi_mensah": -20
+              },
+              "affinity": [
+                [
+                  "kofi_mensah",
+                  "marcus_vale",
+                  -25
+                ]
+              ]
+            }
+          },
+          {
+            "id": "lend",
+            "fact": "Kofi Mensah has bought the Net Loft with a private loan nobody can name.",
+            "effects": {
+              "money": [
+                "ines_larsson",
+                "kofi_mensah",
+                300
+              ],
+              "affinity": [
+                [
+                  "kofi_mensah",
+                  "ines_larsson",
+                  20
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The loft has an owner and a future. The harbour talks about the boat."
+    },
+    {
+      "id": "card_game",
+      "title": "Thursday cards",
+      "incident": {
+        "text": "Dolores Quinn lost again at Thursday cards. She is now ₡300 down and Sal wants it by the weekend.",
+        "drivers": [
+          "dolores_quinn",
+          "sal_romano"
+        ]
+      },
+      "confront": {
+        "note": "Ben Carter, the constable who sits at the game, is asked why he never stops it.",
+        "drivers": [
+          "ben_carter",
+          "moe_tanaka",
+          "dolores_quinn"
+        ]
+      },
+      "decision": {
+        "decider": "sal_romano",
+        "question": "Does Sal forgive Dolores's debt, press her for it, or close the game before the constable has to?",
+        "options": [
+          {
+            "id": "forgive",
+            "fact": "Sal Romano tore up Dolores Quinn's card debt in front of the table.",
+            "effects": {
+              "affinity": [
+                [
+                  "dolores_quinn",
+                  "sal_romano",
+                  25
+                ]
+              ],
+              "mood": {
+                "dolores_quinn": 15
+              }
+            }
+          },
+          {
+            "id": "press",
+            "fact": "Dolores Quinn is selling her late husband's watch to pay a card debt.",
+            "effects": {
+              "money": [
+                "dolores_quinn",
+                "sal_romano",
+                150
+              ],
+              "affinity": [
+                [
+                  "dolores_quinn",
+                  "sal_romano",
+                  -25
+                ]
+              ],
+              "mood": {
+                "dolores_quinn": -15
+              }
+            }
+          },
+          {
+            "id": "close",
+            "fact": "There is no more Thursday card game at the Anchor.",
+            "effects": {
+              "affinity": [
+                [
+                  "ben_carter",
+                  "sal_romano",
+                  10
+                ]
+              ],
+              "mood": {
+                "moe_tanaka": -5
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "Thursday nights are different now. Debts and favours have moved."
+    },
+    {
+      "id": "osman_yusuf",
+      "title": "Father-in-law",
+      "incident": {
+        "text": "Yusuf Demir was refused service at the Anchor by a friend of Jay Whitlock: 'you're the one who sacked him'.",
+        "drivers": [
+          "yusuf_demir",
+          "jay_whitlock"
+        ]
+      },
+      "confront": {
+        "note": "Aylin is tired of her husband carrying her father's blame. Today she says so to both of them.",
+        "drivers": [
+          "aylin_demir",
+          "osman_kaya",
+          "yusuf_demir"
+        ]
+      },
+      "decision": {
+        "decider": "osman_kaya",
+        "question": "Does Osman clear Yusuf's name in public, offer Jay his job back, or let it lie?",
+        "options": [
+          {
+            "id": "clear",
+            "fact": "Osman Kaya told the Anchor that firing Jay Whitlock was his decision, not his son-in-law's.",
+            "effects": {
+              "affinity": [
+                [
+                  "yusuf_demir",
+                  "osman_kaya",
+                  25
+                ],
+                [
+                  "jay_whitlock",
+                  "yusuf_demir",
+                  15
+                ]
+              ]
+            }
+          },
+          {
+            "id": "rehire",
+            "fact": "Jay Whitlock has been offered his old job back at Demir Garage.",
+            "effects": {
+              "affinity": [
+                [
+                  "jay_whitlock",
+                  "osman_kaya",
+                  20
+                ]
+              ],
+              "mood": {
+                "jay_whitlock": 15
+              }
+            }
+          },
+          {
+            "id": "lie",
+            "fact": "Osman Kaya says the garage's business is nobody else's. Yusuf keeps carrying it.",
+            "effects": {
+              "affinity": [
+                [
+                  "aylin_demir",
+                  "osman_kaya",
+                  -20
+                ]
+              ],
+              "mood": {
+                "yusuf_demir": -10
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "The garage family has spoken, or chosen silence. The street hears either way."
+    },
+    {
+      "id": "orchard_will",
+      "title": "Hamish's will",
+      "incident": {
+        "text": "Hamish McBride had the lawyer from the next town round for tea. Agnes witnessed something and won't say what.",
+        "drivers": [
+          "hamish_mcbride",
+          "agnes_duarte"
+        ]
+      },
+      "confront": {
+        "note": "Marcus Vale makes Hamish a generous offer for the orchard, in cash, today.",
+        "drivers": [
+          "marcus_vale",
+          "hamish_mcbride",
+          "kofi_mensah"
+        ]
+      },
+      "decision": {
+        "decider": "hamish_mcbride",
+        "question": "Does Hamish tell Kofi the orchard is his, sell to Marcus, or keep everyone guessing?",
+        "options": [
+          {
+            "id": "tell",
+            "fact": "Hamish McBride told Kofi Mensah the orchard goes to him. Kofi cried in the cider shed.",
+            "effects": {
+              "affinity": [
+                [
+                  "kofi_mensah",
+                  "hamish_mcbride",
+                  30
+                ]
+              ],
+              "mood": {
+                "kofi_mensah": 20
+              }
+            }
+          },
+          {
+            "id": "sell",
+            "fact": "Hamish McBride sold the orchard to Marcus Vale, keeping the right to live there.",
+            "effects": {
+              "money": [
+                "marcus_vale",
+                "hamish_mcbride",
+                400
+              ],
+              "mood": {
+                "kofi_mensah": -25
+              },
+              "affinity": [
+                [
+                  "kofi_mensah",
+                  "hamish_mcbride",
+                  -25
+                ]
+              ]
+            }
+          },
+          {
+            "id": "guess",
+            "fact": "Hamish McBride turned Marcus Vale down with a joke. Nobody knows who gets the orchard.",
+            "effects": {
+              "affinity": [
+                [
+                  "marcus_vale",
+                  "hamish_mcbride",
+                  -10
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The orchard's future is settled or teased. Its trees don't care; the town does."
+    },
+    {
+      "id": "back_door_fish",
+      "title": "Back-door fish",
+      "incident": {
+        "text": "Gus Ferreira saw Tunde Okafor unloading fish at the back of Café Moreno at midnight.",
+        "drivers": [
+          "gus_ferreira",
+          "tunde_okafor"
+        ]
+      },
+      "confront": {
+        "note": "Mira asks Tunde where the extra money in the tin comes from. Devendra is asking around too.",
+        "drivers": [
+          "mira_okafor",
+          "tunde_okafor",
+          "devendra_rao"
+        ]
+      },
+      "decision": {
+        "decider": "tunde_okafor",
+        "question": "Does Tunde stop the back-door sales, tell Mira and keep going, or ask the council to change the market bylaw?",
+        "options": [
+          {
+            "id": "stop",
+            "fact": "Tunde Okafor no longer sells fish to the café at night.",
+            "effects": {
+              "affinity": [
+                [
+                  "rosa_moreno",
+                  "tunde_okafor",
+                  -10
+                ]
+              ],
+              "mood": {
+                "tunde_okafor": -5
+              }
+            }
+          },
+          {
+            "id": "tell",
+            "fact": "Mira Okafor now knows the extra money came from night sales to the café.",
+            "effects": {
+              "affinity": [
+                [
+                  "mira_okafor",
+                  "tunde_okafor",
+                  -10
+                ]
+              ]
+            }
+          },
+          {
+            "id": "bylaw",
+            "fact": "Tunde Okafor has asked the council to let fishers sell direct to cafés.",
+            "effects": {
+              "policy": "market_bylaw_repeal",
+              "affinity": [
+                [
+                  "devendra_rao",
+                  "tunde_okafor",
+                  -25
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The night trade is over or out in the open. Market mornings feel different."
+    },
+    {
+      "id": "harbour_wall",
+      "title": "The harbour wall contract",
+      "incident": {
+        "text": "A winter swell overtopped the old harbour wall and flooded the net store.",
+        "drivers": [
+          "idris_bello",
+          "elias_brand"
+        ]
+      },
+      "confront": {
+        "note": "Elias Brand hears an outside firm has bid for the wall, and that Marcus Vale knows the bidder.",
+        "drivers": [
+          "elias_brand",
+          "marcus_vale",
+          "kofi_mensah"
+        ]
+      },
+      "decision": {
+        "decider": "ingrid_halvorsen",
+        "question": "Does the mayor give the wall to Brand Carpentry, the outside firm, or put it off again?",
+        "options": [
+          {
+            "id": "local",
+            "fact": "Brand Carpentry has the harbour wall contract. Work starts after the festival.",
+            "effects": {
+              "affinity": [
+                [
+                  "elias_brand",
+                  "ingrid_halvorsen",
+                  25
+                ],
+                [
+                  "marcus_vale",
+                  "ingrid_halvorsen",
+                  -10
+                ]
+              ]
+            }
+          },
+          {
+            "id": "outside",
+            "fact": "The harbour wall goes to an outside firm. Elias Brand says the price was never fair.",
+            "effects": {
+              "affinity": [
+                [
+                  "elias_brand",
+                  "ingrid_halvorsen",
+                  -25
+                ],
+                [
+                  "elias_brand",
+                  "marcus_vale",
+                  -20
+                ]
+              ]
+            }
+          },
+          {
+            "id": "delay",
+            "fact": "The harbour wall is put off again until the town can pay for it.",
+            "effects": {
+              "affinity": [
+                [
+                  "idris_bello",
+                  "ingrid_halvorsen",
+                  -15
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The wall has a builder, a rival, or another delay. The harbour remembers who promised what."
+    },
+    {
+      "id": "priya_ben",
+      "title": "The reporter and the constable",
+      "incident": {
+        "text": "Priya Nair's notebook went missing for an hour at the café. It came back on the table, closed.",
+        "drivers": [
+          "priya_nair",
+          "ben_carter"
+        ]
+      },
+      "confront": {
+        "note": "Ben Carter asks Priya not to run what she has on Marcus's council loan; it would end his job too.",
+        "drivers": [
+          "ben_carter",
+          "priya_nair"
+        ]
+      },
+      "decision": {
+        "decider": "priya_nair",
+        "question": "Does Priya run the story, drop it for Ben's sake, or trade it to Marcus for something bigger?",
+        "options": [
+          {
+            "id": "run",
+            "fact": "The Herald will print that Marcus Vale has been lending money to the council.",
+            "effects": {
+              "affinity": [
+                [
+                  "ben_carter",
+                  "priya_nair",
+                  -25
+                ],
+                [
+                  "marcus_vale",
+                  "priya_nair",
+                  -30
+                ]
+              ],
+              "approval": -5
+            }
+          },
+          {
+            "id": "drop",
+            "fact": "Priya Nair dropped a story. Ben Carter bought her coffee every day this week.",
+            "effects": {
+              "affinity": [
+                [
+                  "ben_carter",
+                  "priya_nair",
+                  25
+                ]
+              ],
+              "mood": {
+                "priya_nair": -10
+              }
+            }
+          },
+          {
+            "id": "trade",
+            "fact": "Priya Nair and Marcus Vale had a long, quiet lunch at the Fontaine Inn.",
+            "effects": {
+              "gossip": "Priya Nair had a private lunch with Marcus Vale"
+            }
+          }
+        ]
+      },
+      "aftermath": "The story ran, died, or became leverage. Reporter and constable look at each other differently."
+    },
+    {
+      "id": "sunny_father",
+      "title": "Sunny's father",
+      "incident": {
+        "text": "Beatrice Fontaine found an old photograph of a young Marcus Vale with a woman who looks exactly like Sunny Adebayo.",
+        "drivers": [
+          "beatrice_fontaine",
+          "sunny_adebayo"
+        ]
+      },
+      "confront": {
+        "note": "Sunny has started asking older people about her mother's summers in Solmere. Sigrid notices her husband avoiding the inn.",
+        "drivers": [
+          "sunny_adebayo",
+          "sigrid_vale",
+          "marcus_vale"
+        ]
+      },
+      "decision": {
+        "decider": "marcus_vale",
+        "question": "Does Marcus tell Sunny he is her father, deny it, or tell Sigrid first?",
+        "options": [
+          {
+            "id": "tell_sunny",
+            "fact": "Marcus Vale told Sunny Adebayo he is her father.",
+            "effects": {
+              "affinity": [
+                [
+                  "sigrid_vale",
+                  "marcus_vale",
+                  -30
+                ],
+                [
+                  "sunny_adebayo",
+                  "marcus_vale",
+                  10
+                ]
+              ],
+              "mood": {
+                "sigrid_vale": -20
+              }
+            }
+          },
+          {
+            "id": "deny",
+            "fact": "Marcus Vale told Sunny Adebayo he never knew her mother. Bea knows he is lying.",
+            "effects": {
+              "affinity": [
+                [
+                  "beatrice_fontaine",
+                  "marcus_vale",
+                  -20
+                ]
+              ],
+              "mood": {
+                "sunny_adebayo": -10
+              }
+            }
+          },
+          {
+            "id": "tell_sigrid",
+            "fact": "Sigrid Vale now knows who Sunny Adebayo is. She has not slept at home since.",
+            "effects": {
+              "affinity": [
+                [
+                  "sigrid_vale",
+                  "marcus_vale",
+                  -35
+                ]
+              ],
+              "mood": {
+                "sigrid_vale": -15
+              }
+            }
+          }
+        ]
+      },
+      "aftermath": "A family secret has moved. The inn, the Vale house and Sunny's room feel it."
+    },
+    {
+      "id": "information_brokers",
+      "title": "Who knows what",
+      "incident": {
+        "text": "Sal Romano and Dmitri the postman were seen comparing notes behind the barber's.",
+        "drivers": [
+          "sal_romano",
+          "dmitri_volkov"
+        ]
+      },
+      "confront": {
+        "note": "Beatrice has realised someone is selling what is said at her inn. She asks around.",
+        "drivers": [
+          "beatrice_fontaine",
+          "gus_ferreira",
+          "sal_romano"
+        ]
+      },
+      "decision": {
+        "decider": "dmitri_volkov",
+        "question": "Does Dmitri stop reading people's post, sell what he knows to Priya, or warn the people involved?",
+        "options": [
+          {
+            "id": "stop",
+            "fact": "Dmitri the postman has promised the chapel he will stop reading people's letters.",
+            "effects": {
+              "affinity": [
+                [
+                  "agnes_duarte",
+                  "dmitri_volkov",
+                  15
+                ]
+              ]
+            }
+          },
+          {
+            "id": "sell",
+            "fact": "Dmitri the postman has been passing what he reads to the Herald.",
+            "effects": {
+              "affinity": [
+                [
+                  "priya_nair",
+                  "dmitri_volkov",
+                  15
+                ]
+              ],
+              "gossip": "the postman reads everyone's letters"
+            }
+          },
+          {
+            "id": "warn",
+            "fact": "Dmitri the postman quietly warned three people that their letters had been read.",
+            "effects": {
+              "affinity": [
+                [
+                  "sal_romano",
+                  "dmitri_volkov",
+                  -20
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "aftermath": "The town's secret-keepers have shifted alliances. People lower their voices in new places."
+    }
+  ],
+  "ordinaryDay": [
+    "your knee or back aches today; take it easy",
+    "it is a family member's birthday; find a small gift",
+    "you want to try cooking something new tonight",
+    "something at home needs fixing: a door, a leak, a shelf",
+    "you found an old photograph and keep thinking about it",
+    "you are in a good mood and want to share it with a friend",
+    "you are behind on a small chore and want it done",
+    "you heard a funny story yesterday and want to tell it",
+    "you want a proper lunch, sitting down, for once",
+    "you owe someone a favour and want to repay it",
+    "a neighbour helped you last week; thank them",
+    "you are worried about a family member's health",
+    "you slept badly and are short with people",
+    "you want to learn something: a recipe, a song, a trick of the trade",
+    "the weather is good and you want to be outside",
+    "you miss someone who left town",
+    "you want to treat yourself to something small",
+    "your work went well yesterday and you feel proud",
+    "you want to check on an older neighbour",
+    "you have a small bet or rivalry going with a friend about something silly",
+    "you are planning something for the weekend",
+    "you want quiet: a walk, a book, the sea",
+    "a child or young relative needs help with something",
+    "you want to hear the latest gossip but not spread it",
+    "you are saving for something specific and counting every crown",
+    "you want to make up with someone after a small spat",
+    "you have spare food or goods and want to give some away",
+    "you want to ask someone's advice about something practical",
+    "you are curious about a newcomer and want to get to know them",
+    "you want to practise your hobby",
+    "a neighbour's dog or goat keeps getting into your garden, and you mean to say something",
+    "someone owes you a few crowns and keeps 'forgetting'; today you'll mention it",
+    "you think a shopkeeper short-changed you yesterday",
+    "the noise from next door kept you up and you are not in the mood to be polite",
+    "a friend promised to help you and didn't show; you're hurt and might say so",
+    "someone took your usual seat or spot, again",
+    "you overheard someone mocking you and you want to know why",
+    "a relative is borrowing your things without asking",
+    "you disagree with a friend about something small and you're both stubborn",
+    "someone jumped the queue at the shop and you said nothing; you're still annoyed"
+  ]
+}
